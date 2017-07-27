@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="c3p0-0.9.1.2">
+    <CLASSES>
+      <root url="jar://E:/dev_lib4j/c3p0/c3p0-0.9.1.2/lib/c3p0-0.9.1.2.jar!/" />
+      <root url="jar://E:/dev_lib4j/commons-beanutils-1.8.3/commons-beanutils-1.8.3.jar!/" />
+      <root url="jar://E:/dev_lib4j/commons-dbutils-1.6/commons-dbutils-1.6.jar!/" />
+      <root url="jar://E:/dev_lib4j/commons-fileupload/commons-fileupload-1.2.1/lib/commons-fileupload-1.2.1.jar!/" />
+      <root url="jar://E:/dev_lib4j/commons-fileupload/commons-io-1.4/commons-io-1.4.jar!/" />
+      <root url="jar://E:/dev_lib4j/dbcp&amp;logging/commons-logging-1.2/commons-logging-1.2.jar!/" />
+      <root url="jar://E:/dev_lib4j/jstl_taglib/jstl.jar!/" />
+      <root url="jar://E:/dev_lib4j/jstl_taglib/standard.jar!/" />
+      <root url="jar://E:/dev_lib4j/mysql/mysql-connector-java-5.1.40-bin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

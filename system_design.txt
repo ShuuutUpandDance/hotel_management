@@ -1,0 +1,10 @@
+开源组件及jar文件：
+    数据库驱动包（1）
+    C3P0连接池（2）CP+XML
+    DbUtils组件（1）注意：表的列名要与bean的属性名一样
+    BeanUtils组件（2）BU+log
+    FileUpload组件（2）FU+io
+配置：
+    C3P0配置文件
+分层：
+    com.zjl.entity/com.zjl.dao/com.zjl.service/com.zjl.servlet

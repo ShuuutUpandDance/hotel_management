@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <!--起始页配置-->
+    <welcome-file-list>
+        <welcome-file>sys/index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--编码过滤器配置-->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>com.zjl.filter.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--菜品servlet配置-->
+    <servlet>
+        <servlet-name>FoodTypeServlet</servlet-name>
+        <servlet-class>com.zjl.servlet.FoodTypeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FoodTypeServlet</servlet-name>
+        <url-pattern>/foodType</url-pattern>
+    </servlet-mapping>
+
+    <!--菜详细servlet配置-->
+    <servlet>
+        <servlet-name>FoodServlet</servlet-name>
+        <servlet-class>com.zjl.servlet.FoodServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FoodServlet</servlet-name>
+        <url-pattern>/food</url-pattern>
+    </servlet-mapping>
+
+    <!--餐桌servlet配置-->
+    <servlet>
+        <servlet-name>DinnerTableServlet</servlet-name>
+        <servlet-class>com.zjl.servlet.DinnerTableServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DinnerTableServlet</servlet-name>
+        <url-pattern>/table</url-pattern>
+    </servlet-mapping>
+</web-app>

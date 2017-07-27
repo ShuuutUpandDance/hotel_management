@@ -1,4 +1,5 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -9,15 +10,20 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="style/js/jquery.js"></script>
-<script type="text/javascript" src="style/js/page_common.js"></script>
-<link href="style/css/common_style_blue.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="style/css/index_1.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/sys/style/js/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/sys/style/js/page_common.js"></script>
+<link href="${pageContext.request.contextPath}/sys/style/css/common_style_blue.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/sys/style/css/index_1.css" />
 	<%--<script type="text/javascript">--%>
 		<%--setInterval(function(){--%>
 			<%--window.location.href = "/wirelessplatform/client.html?method=list";--%>
 		<%--},1000 * 50);--%>
 	<%--</script>--%>
+	<style type="text/css">
+		table td{
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 	<!-- 页面标题 -->
@@ -26,7 +32,7 @@
 		<div id="TitleArea_Title">
 			<div id="TitleArea_Title_Content">
 				<img border="0" width="13" height="13"
-					src="style/images/title_arrow.gif" /> 餐厅订单列表
+					src="${pageContext.request.contextPath}/sys/style/images/title_arrow.gif" /> 餐厅订单列表
 			</div>
 		</div>
 		<div id="TitleArea_End"></div>
@@ -48,27 +54,36 @@
 			</thead>
 			<!--显示数据列表 -->
 			<tbody id="TableData">
-				
-			 		<tr height="60">
-				 		<td>15375222</td>
-				 		<td>纽约</td>
-				 		<td>2014-12-08 23:29:18.0</td>
-				 		<td>204.0</td>
-				 		
-				 			
-				 				<td>未结账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				 					
-				 				</td>
-				 			
-				 			
-				 		
-				 		<td>
-							<a href="orderDetail.jsp" class="FunctionButton">详细</a>
-				 			
-				 				<a href="#" class="FunctionButton">结账</a>
-				 			
-				 		</td>
-			 		</tr>
+				<c:choose>
+					<c:when test="${not empty requestScope.orderList}">
+						<c:forEach var="order" items="${requestScope.orderList}">
+							<tr height="60">
+								<td>${order.id}</td>
+								<td>${order.tableName}</td>
+								<td>${order.orderDate}</td>
+								<td>${order.totalPrice}</td>
+								<c:if test="${order.orderStatus == 0}">
+									<td>未结账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								</c:if>
+								<c:if test="${order.orderStatus == 1}">
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								</c:if>
+								<td>
+									<a href="${pageContext.request.contextPath}/orderDetail?method=list&orderId=${order.id}" class="FunctionButton">详细</a>
+
+									<c:if test="${order.orderStatus == 0}">
+										<a href="${pageContext.request.contextPath}/orders?method=checkOut&id=${order.id}" class="FunctionButton">结账</a>
+									</c:if>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr height="60">
+							<td colspan="6" align="center">对不起！数据库中没有数据！</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 			 	
 			</tbody>
 		</table>

@@ -44,8 +44,29 @@
         <servlet-name>DinnerTableServlet</servlet-name>
         <servlet-class>com.zjl.servlet.DinnerTableServlet</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>DinnerTableServlet</servlet-name>
         <url-pattern>/table</url-pattern>
+    </servlet-mapping>
+
+    <!--订单servlet配置-->
+    <servlet>
+        <servlet-name>OrdersServlet</servlet-name>
+        <servlet-class>com.zjl.servlet.OrdersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrdersServlet</servlet-name>
+        <url-pattern>/orders</url-pattern>
+    </servlet-mapping>
+
+    <!--订单详情servlet配置-->
+    <servlet>
+        <servlet-name>OrderDetailServlet</servlet-name>
+        <servlet-class>com.zjl.servlet.OrderDetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderDetailServlet</servlet-name>
+        <url-pattern>/orderDetail</url-pattern>
     </servlet-mapping>
 </web-app>

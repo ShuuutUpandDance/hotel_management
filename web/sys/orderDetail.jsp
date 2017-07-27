@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -9,10 +10,15 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="style/js/jquery.js"></script>
-<script type="text/javascript" src="style/js/page_common.js"></script>
-<link href="style/css/common_style_blue.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="style/css/index_1.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/sys/style/js/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/sys/style/js/page_common.js"></script>
+<link href="${pageContext.request.contextPath}/sys/style/css/common_style_blue.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/sys/style/css/index_1.css" />
+	<style type="text/css">
+		table td{
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 	<!-- 页面标题 -->
@@ -21,7 +27,7 @@
 		<div id="TitleArea_Title">
 			<div id="TitleArea_Title_Content">
 				<img border="0" width="13" height="13"
-					src="style/css/images/title_arrow.gif" /> 订单菜品列表
+					src="${pageContext.request.contextPath}/sys/style/css/images/title_arrow.gif" /> 订单菜品列表
 			</div>
 		</div>
 		<div id="TitleArea_End"></div>
@@ -40,25 +46,22 @@
 			</thead>
 			<!--显示数据列表 -->
 			<tbody id="TableData">
-				
-			 		<tr height="60">
-				 		<td>烤乳猪</td>
-				 		<td>68.0</td>
-				 		<td>1</td>
-			 		</tr>
-			 	
-			 		<tr height="60">
-				 		<td>烤乳猪</td>
-				 		<td>68.0</td>
-				 		<td>1</td>
-			 		</tr>
-			 	
-			 		<tr height="60">
-				 		<td>白切鸡</td>
-				 		<td>68.0</td>
-				 		<td>1</td>
-			 		</tr>
-			 	
+				<c:choose>
+					<c:when test="${not empty requestScope.orderDetail}">
+						<c:forEach items="${requestScope.orderDetail}" var="detail">
+							<tr height="60">
+								<td>${detail.foodName}</td>
+								<td>${detail.price}</td>
+								<td>${detail.foodCount}</td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr height="60">
+							<td colspan="3">对不起，没有数据！</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 			</tbody>
 		</table>
 		<!-- 其他功能超链接 -->

@@ -101,7 +101,7 @@ body {
                 	<a target="right" href="${pageContext.request.contextPath}/food?method=list">菜品管理</a>
 				</li>
                 <li class="level2 level2Style">
-                	<a target="right" href="${pageContext.request.contextPath}/sys/orderList.jsp">餐厅订单</a>
+                	<a target="right" href="${pageContext.request.contextPath}/orders?method=list">餐厅订单</a>
 				</li>
             </ul>
         </li>
